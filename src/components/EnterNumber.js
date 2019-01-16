@@ -1,29 +1,33 @@
 import React, { Component } from 'react';
 
 class EnterNumber extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            currentNum: 1,
+            currentNum: '',
         };
     }
 
     onUpClick = (event) => {
         let newNumber = Number(this.state.currentNum) + 1;
-        console.log(event.target.value);
-        console.log(newNumber);
+        // console.log(event.target.value);
+        // console.log(newNumber);
         this.setState({
             currentNum: newNumber,
         });
+
+        this.props.changeAppNumber(this.state.currentNum);
     };
 
     onDownClick = (event) => {
         let newNumber = Number(this.state.currentNum) - 1;
-        console.log(event.target.value);
-        console.log(newNumber);
+        // console.log(event.target.value);
+        // console.log(newNumber);
         this.setState({
             currentNum: newNumber,
         });
+
+        this.props.changeAppNumber(this.state.currentNum);
     };
 
     currentNumChange = (event) => {

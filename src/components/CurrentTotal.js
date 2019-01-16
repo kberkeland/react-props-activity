@@ -1,18 +1,30 @@
 import React, { Component } from 'react';
 
 class CurrentTotal extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            countNum: '',
-        };
+            totalNum: '',
+        }
     }
+
+    addToHistory = (event) => {
+        event.preventDefault();
+        console.log('In addToHistory');
+        this.setState({
+            totalNum: this.props.appCurrentNumber,
+        })
+        this.props.sendToHistory(this.state.totalNum);
+    }
+
     render() {
+        console.log(`totalNum: ${this.state.totalNum}`)
+        
         return (
-            <form>
-                <button>UP</button>
-                <input />
-                <button>DOWN</button>
+            <form onSubmit={this.addToHistory}>
+                <h2>Current Total</h2>
+                <p>{this.props.appCurrentNumber}</p>
+                <button type="submit">Save</button>
             </form>
     );
   }

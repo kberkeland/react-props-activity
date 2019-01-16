@@ -8,12 +8,16 @@ class History extends Component {
         };
     }
     render() {
+        const historyArray = [];
+        for(let history of this.props.historyNumArray) {
+            let numberList = (<p>{history}</p>);
+            historyArray.push(numberList);
+        }
         return (
-            <form>
-                <button>UP</button>
-                <input />
-                <button>DOWN</button>
-            </form>
+            <div>
+                <h2>History</h2>
+                {historyArray}
+            </div>
     );
   }
 }
