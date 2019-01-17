@@ -18,8 +18,8 @@ class CurrentTotal extends Component {
     }
 
     render() {
-        console.log(`totalNum: ${this.state.totalNum}`);
-        console.log(`App current number: ${this.props.appCurrentNumber}`);
+        // console.log(`totalNum: ${this.state.totalNum}`);
+        // console.log(`App current number: ${this.props.appCurrentNumber}`);
         
         return (
             <form onSubmit={this.addToHistory}>

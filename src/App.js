@@ -30,6 +30,7 @@ class App extends Component {
 
   fromCurrentTotalToHistory = (hisNumIn) => {
     this.setState({
+      appCurrentNumber: 0,
       historyNumArray: [...this.state.historyNumArray, hisNumIn],
     });
   }
