@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 
 class History extends Component {
-    constructor() {
-        super();
-        this.state = {
-            countNum: '',
-        };
+    constructor(props) {
+        super(props);
+        this.super = {
+            test: '',
+        }
     }
+
+    deleteHistory = () => {
+        this.props.fromHistoryToApp();
+    }
+
     render() {
         const historyArray = [];
         for(let history of this.props.historyNumArray) {
@@ -16,7 +21,8 @@ class History extends Component {
         return (
             <div>
                 <h2>History</h2>
-                {historyArray}
+                <button onClick={this.deleteHistory}>DELETE HISTORY</button>
+                {historyArray}                
             </div>
     );
   }

@@ -10,7 +10,6 @@ class EnterNumber extends Component {
 
     onUpClick = (event) => {
         let newNumber = Number(this.state.currentNum);
-        // console.log(event.target.value);
         console.log(newNumber);
         this.props.fromEnterNumberToApp(newNumber);
     };
@@ -25,9 +24,16 @@ class EnterNumber extends Component {
     };
 
     currentNumChange = (event) => {
+        console.log(event.target.value);
+        if(Number(event.target.value) > 10) {
+            alert(`Do not go over 10`);
+        } else if(Number(event.target.value) < 0){
+            alert(`Not allowed below 0`);
+        } else {
         this.setState({
             currentNum: event.target.value,
         });
+        };
     };
 
 
@@ -38,7 +44,7 @@ class EnterNumber extends Component {
                 <button onClick={this.onUpClick}>UP</button>
                 <input onChange={this.currentNumChange} />
                 <button onClick={this.onDownClick}>DOWN</button>
-                <p>{this.state.currentNum}</p>
+                {/* <p>{this.state.currentNum}</p> */}
             </div>
     );
   }
