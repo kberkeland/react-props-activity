@@ -34,6 +34,12 @@ class App extends Component {
     });
   }
 
+  fromHistoryToApp = () => {
+    this.setState({
+      historyNumArray: [],
+    });  
+  }
+
   render() {
     return (
       <div className="App">
@@ -41,7 +47,7 @@ class App extends Component {
         <p>Enter a number and click up or down. The total will increase or decrease by that amount.</p>
         <EnterNumber fromEnterNumberToApp={this.fromEnterNumberToApp} />
         <CurrentTotal appCurrentNumber={this.state.appCurrentNumber} fromCurrentTotalToHistory={this.fromCurrentTotalToHistory}/>
-        <History historyNumArray={this.state.historyNumArray} />
+        <History fromHistoryToApp={this.fromHistoryToApp} historyNumArray={this.state.historyNumArray} />
       </div>
     );
   }
