@@ -9,25 +9,19 @@ class EnterNumber extends Component {
     }
 
     onUpClick = (event) => {
-        let newNumber = Number(this.state.currentNum) + 1;
+        let newNumber = Number(this.state.currentNum);
         // console.log(event.target.value);
-        // console.log(newNumber);
-        this.setState({
-            currentNum: newNumber,
-        });
-
-        this.props.changeAppNumber(this.state.currentNum);
+        console.log(newNumber);
+        this.props.fromEnterNumberToApp(newNumber);
     };
 
     onDownClick = (event) => {
-        let newNumber = Number(this.state.currentNum) - 1;
+        let assignNegative = '-' + this.state.currentNum;
+        let newNumber = Number(assignNegative);
         // console.log(event.target.value);
         // console.log(newNumber);
-        this.setState({
-            currentNum: newNumber,
-        });
 
-        this.props.changeAppNumber(this.state.currentNum);
+        this.props.fromEnterNumberToApp(newNumber);
     };
 
     currentNumChange = (event) => {
@@ -35,6 +29,8 @@ class EnterNumber extends Component {
             currentNum: event.target.value,
         });
     };
+
+
 
     render() {
         return (

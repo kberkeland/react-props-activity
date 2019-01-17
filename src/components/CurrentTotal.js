@@ -4,21 +4,22 @@ class CurrentTotal extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            totalNum: '',
+            totalNum: 0,
         }
     }
 
     addToHistory = (event) => {
         event.preventDefault();
         console.log('In addToHistory');
+        // let fixNumber = this.state.totalNum + this.props.appCurrentNumber;
         this.setState({
             totalNum: this.props.appCurrentNumber,
-        })
-        this.props.sendToHistory(this.state.totalNum);
+        }, () => {this.props.fromCurrentTotalToHistory(this.state.totalNum)});
     }
 
     render() {
-        console.log(`totalNum: ${this.state.totalNum}`)
+        console.log(`totalNum: ${this.state.totalNum}`);
+        console.log(`App current number: ${this.props.appCurrentNumber}`);
         
         return (
             <form onSubmit={this.addToHistory}>
