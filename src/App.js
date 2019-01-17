@@ -12,21 +12,26 @@ class App extends Component {
     super()
 
     this.state = {
-      appCurrentNumber: '',
+      appCurrentNumber: 0,
       historyNumArray: [],
     }
   }
 
-  changeAppNumber = (numIn) => {
+  fromEnterNumberToApp = (numIn) => {
     this.setState({
-      appCurrentNumber: numIn,
-    });
+      appCurrentNumber: numIn + this.state.appCurrentNumber,
+    }, () => {this.logFields()});
   }
 
-  sendToHistory = (hisNumIn) => {
+  logFields = () => {
+    const testOut = this.state.appCurrentNumber;
+    console.log(`Test out = `, testOut);
+  }
+
+  fromCurrentTotalToHistory = (hisNumIn) => {
     this.setState({
       historyNumArray: [...this.state.historyNumArray, hisNumIn],
-    })
+    });
   }
 
   render() {
@@ -34,8 +39,8 @@ class App extends Component {
       <div className="App">
         <Header />
         <p>Enter a number and click up or down. The total will increase or decrease by that amount.</p>
-        <EnterNumber changeAppNumber={this.changeAppNumber} />
-        <CurrentTotal appCurrentNumber={this.state.appCurrentNumber} sendToHistory={this.sendToHistory}/>
+        <EnterNumber fromEnterNumberToApp={this.fromEnterNumberToApp} />
+        <CurrentTotal appCurrentNumber={this.state.appCurrentNumber} fromCurrentTotalToHistory={this.fromCurrentTotalToHistory}/>
         <History historyNumArray={this.state.historyNumArray} />
       </div>
     );
